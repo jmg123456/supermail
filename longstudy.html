@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+   <div id="app">
+       <h3>水果超市</h3>
+       名称<input name="input" v-model="name"><br/>
+       价格<input    v-model="price"       >
+       <input type="submit" @click="add">
+       <table>
+           <tr>
+               <td>序号</td>
+               <td>名称</td>
+               <td>价格</td>
+               <td>数量</td>
+           </tr>
+           <tr  v-for="item,index in itm">
+               <td>{{index+1}}</td>
+               <td>{{item.name}}</td>
+               <td>{{item.price}}</td>
+               <td>
+                   <button @click="numdisadd(index)">-</button>
+                    {{item.num}}
+                   <button @click="numadd(index)">+</button>
+                   
+               </td>
+               <td>
+                <button @click="totalprice(index)">计算价钱</button>
+               </td>
+                
+           </tr>
+       </table>
+      <h3>{{total}}</h3>
+</div>
+</body>
+<script src="../vue.js"></script>
+<script>
+var app = new Vue({
+    el:"#app",
+    data:{
+        name:'',
+        price:'',
+        total:0,
+        itm:[],
+    },
+    methods:{
+        add(){
+            this.itm.push({
+               name : this.name,
+               price : this.price,
+               num :0
+            })
+
+        },
+        numadd(index){
+            this.itm[index].num++
+        },
+        numdisadd(index){
+            this.itm[index].num--
+        },
+        totalprice(index){
+            this.total = this.itm[index].num *this.itm[index].price
+
+
+        }
+       
+        
+    },
+    // computed:{
+    //     totalprice : function(index) {
+    //         return this.itm[0].num
+
+    //     }
+    // }
+
+}
+)
+
+</script>
+</html>

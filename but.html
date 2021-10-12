@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style type="text/css">
+    td{
+        width:105px;
+        background-color: #ccc;
+        text-align: center;
+    }
+    </style>
+</head>
+<body>
+<div id="app">
+
+    <table>
+    <tr>
+        <td>序号</td>
+        <td>姓名</td>
+        <td>年龄</td>
+        <td>是否移除</td>
+   
+    </tr>
+    <tr v-for="(item,index) in massage ">
+        <td>{{item.li | Show_date()}} </td>
+        <td>{{item.name}}</td>
+        <td><button @click="unin(index)"   v-bind:disabled="item.age<=1">-</button>
+          
+            {{item.age}}<button @click="ince(index)">+</button></td>
+        <td> <button @click="move(index)">移除</button>  </td>
+        <!-- <td v-for="val in item ">{{val}}</td> -->
+        
+    </tr>
+  
+    </table>
+    <input type="checkbox" value="男" v-model.lazy="sex"/>
+    <input type="checkbox" value="男女" v-model.lazy="sex"/>
+    <input type="checkbox" value="女" v-model.lazy="sex"/>
+   性别是 <p v-for="item in sex"> {{item}}</p>
+</div>
+</body>
+<script src="../vue.js"></script>
+<script>
+var app = new Vue({
+    el: '#app',
+    data:{
+        sex:[],
+        massage:[{li:'1',name:'剑哥',age:18},{li:'2',name:'张哥',age:28},{li:'3',name:'老王',age:38}]
+    },
+    methods:{
+        unin(index){
+            this.massage[index].age--
+        },
+        ince(index){
+            this.massage[index].age++
+        },
+        move(index){
+            this.massage.splice(index,1)
+        } 
+    
+    }
+
+    // computed:{
+    //     tatle(){
+    //         let x = 0
+    //         for(let i=0;i<=this.massage.length;i++){
+    //           x = x + this.massage[i].age
+    //         }   
+    //         return x
+               
+    //     }}
+    ,
+    filters:{
+        Show_date(li){
+               return '$ '+li
+        }
+    }
+})
+</script>
+</html>

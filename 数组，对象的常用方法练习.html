@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div></div>
+</body>
+<script>
+//filter() 方法创建一个新的数组，新数组中的元素是通过检查指定数组中符合条件的所有元素。
+//筛选条件
+    // let arr = [1,2,3,4]
+    // let arr1 = arr.filter(itm=>itm>2)
+    // console.log(arr)
+    // console.log(arr1)
+
+    // map() 方法返回一个新数组，数组中的元素为原始数组元素调用函数处理后的值。
+    //  let arr = [1,2,3,4]
+    // let arr1 = arr.map(itm=>itm+2)
+    // console.log(arr)
+    // console.log(arr1)
+
+/**
+forEach() 方法用于调用数组的每个元素，并将元素传递给回调函数。
+注意: forEach() 对于空数组是不会执行回调函数的。
+tips: forEach()中不支持使用break(报错)和return(不能结束循环)，有需要时可使用常规的for循环。
+
+   let arr = [1,2,3,4]
+    let arr1 = []
+    arr.forEach(itm=>arr1.push(itm))
+    console.log(arr)
+    console.log(arr1)
+      **/
+
+
+
+/**find() 方法为数组中的每个元素都调用一次函数执行：
+
+当数组中的元素在测试条件时返回 true 时, find() 返回符合条件的元素，之后的值不会再调用执行函数。
+如果没有符合条件的元素返回 undefined
+const arr= [4, 9, 16, 25];
+const b = arr.find(item => item>10)
+const c = arr.find(item => item<1)
+console.log(arr)   // [4, 9, 16, 25]
+console.log(b)  // 16
+console.log(c)  // undefined
+**/
+//findIndex() 方法返回传入一个测试条件（函数）符合条件的数组第一个元素位置。
+//如果有一个元素满足条件，则表达式返回true , 剩余的元素不会再执行检测。
+//some()如果没有满足条件的元素，则返回false。
+//every() 方法用于检测数组所有元素是否都符合指定条件（通过函数提供）
+
+
+    let arr = [1,2,3,4,5]
+    // let arr1 = arr.push () // push数组添加元素，并返回数组长度
+    // let arr2 = arr.pop ()  //删除数组的最后一个元素，成功返回删除元素的值
+    // let arr3 = arr.shift() //删除数组的第一个元素，成功返回删除元素的值
+    // let arr4 = arr.unshift() //unshift()：在当前数组的最前面添加一个元素，成功返回当前数组的长度，同push相同，修改原数组以后会把新数组原原本本的输出，unshift()：在当前数组的最前面添加一个元素，成功返回当前数组的长度，同push相同，修改原数组以后会把新数组原原本本的输出，unshift()：在当前数组的最前面添加一个元素，成功返回当前数组的长度，同push相同，修改原数组以后会把新数组原原本本的输出，
+    let arr5 = arr.splice(0,1,2)//三个参数(index:数组开始下标； len: 替换/删除的长度；item:替换的值，删除操作 的话 item为空)，可以执行添加、删除、替换三种操作。
+   //sort()：使原数组按照字符编码默认从小到大排序,成功返回排序后的数组
+    //reverse()：将数组倒序，成功返回倒序后的数组，
+    //split()：将字符串按某个字符或者其他分割，返回一个数组
+    console.log(arr)
+    console.log(arr5)
+</script>
+</html>

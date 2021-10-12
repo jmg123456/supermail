@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <style type="text/css">
+        td {
+            width: 105px;
+            background-color: #ccc;
+            text-align: center;
+        }
+    </style>
+</body>
+<div id="app">
+    <h1>欢迎光临水果超市</h1>
+
+    <h3>要添加的水果</h3><input v-model.lazy="name" type="text" />
+    <h3>要添加的价格</h3><input v-model.number="price" type="number" />
+    <input @click="addme" type="submit" />
+<table>
+    <tr>
+        <td>序号</td>
+        <td>名称</td>
+        <td>价格</td>
+        <td>数量</td>
+    </tr>
+    <tr v-for="item,index in list">   
+        <td>{{index+1}}</td>
+        <td>{{item.name}}</td>
+        <td>{{item.price}}</td>
+        <td>{{item.count}}</td>
+    </tr>
+</table>
+   
+</div>
+
+<script src="../vue.js"></script>
+<script>
+    const app = new Vue({
+        el:"#app",
+        data:{
+            message:"1",
+            name:'',
+            price:'',
+            list:[],
+            count:0
+        },
+        methods:{
+            addme(){
+                this.list.push({
+                    name: this.name,
+                    price: this.price,
+                })
+
+            }
+
+        }
+    })
+</script>
+
+</html>

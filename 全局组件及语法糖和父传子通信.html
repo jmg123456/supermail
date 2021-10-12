@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <cpn :cmov="movies"></cpn>
+    </div>
+    
+
+    <template id="child">
+      <div>
+        <ul v-for="item,index in cmov">
+            <li >{{item.li}}</li>
+            <li>{{item.name}}</li>
+            <li>{{item.age}}</li>
+        </ul>
+      </div>
+      
+    </template>
+</body>
+<script src="../vue.js"></script>
+<script>
+    // Vue.component('cpn', { template: "#child" })
+   
+    const app = new Vue({
+        el: '#app',
+        data: {
+            name: 122,
+            movies:[{li:'1',name:'剑哥',age:18},{li:'2',name:'张哥',age:28},{li:'3',name:'老王',age:38}]
+        },
+        methods: {
+        },
+        components:{
+            cpn:{ template: "#child" ,
+                //   props:['mov'],
+                props:{
+                    cmov:{
+                        type:Array,
+                        default:{}
+                    }
+                }
+                 
+        }
+        },
+        
+    })
+
+    
+</script>
+
+</html>

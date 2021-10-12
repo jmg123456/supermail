@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style type="text/css">
+        td {
+            width: 105px;
+            background-color: #ccc;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <h1>欢迎光临水果超市</h1>
+
+        <h3>要添加的水果</h3><input v-model.lazy="name" type="text" />
+        <h3>要添加的价格</h3><input v-model.number="price" type="number" />
+        <input @click="addme" type="submit" />
+
+        <table>
+            <tr>
+                <td>序号</td>
+                <td>名称</td>
+                <td>价格</td>
+                <td>数量</td>
+            </tr>
+            <tr v-for="item,index in itm">
+                <td>{{index+1}}</td>
+                <td>{{item.name}}</td>
+                <td>{{item.price}}</td>
+                <td> <button @click="unin(index)" v-bind:disabled="item.count <=1">-</button>
+
+                    {{item.count}}<button @click="ince(index)">+</button>
+                </td>
+            </tr>
+            <tr>
+                总价格 <td>{{total}}</td>
+            </tr>
+
+        </table>
+    </div>
+</body>
+<script src="../vue.js"></script>
+<script>
+    var app = new Vue({
+        el: '#app',
+        data: {
+            name: '',
+            price: '',
+            itm: [],
+
+        },
+        computeds: {
+            total: function() {
+                return 123
+
+            }
+       },
+        methods: {
+            unin(index) {
+                this.itm[index].count--
+            },
+            ince(index) {
+                this.itm[index].count++
+            },
+            addme() {
+                if (this.name.length != 0 && this.price.length != 0) {
+                    this.itm.push({
+                        name: this.name,
+                        price: this.price,
+                        count: 0
+
+                    })
+                }
+                else {
+                    alert("不能为空，请重新输入")
+                }
+
+            },
+           
+        }
+
+
+
+
+    })
+</script>
+
+</html>
